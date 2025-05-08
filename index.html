@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsMark Pro | Advanced WhatsApp Marketing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #25D366;
+            --primary-dark: #128C7E;
+            --secondary: #075E54;
+            --accent: #34B7F1;
+            --light: #f5f5f5;
+            --dark: #333;
+            --gray: #888;
+            --chat-bg: #e5ddd5;
+            --sent-msg: #DCF8C6;
+            --received-msg: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links .btn-signup {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-button {
+            background-color: white;
+            color: var(--secondary);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin: 0.5rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Platform Showcase */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            color: var(--secondary);
+        }
+        
+        .platform-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            margin: 3rem 0;
+        }
+        
+        .platform-features {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .platform-features h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        .platform-features ul {
+            list-style: none;
+        }
+        
+        .platform-features li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .platform-features li i {
+            color: var(--primary);
+        }
+        
+        /* Chat UI */
+        .chat-container {
+            flex: 1;
+            min-width: 350px;
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .chat-container:hover {
+            transform: translateY(-5px);
+        }
+        
+        .chat-header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chat-contact {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .chat-contact img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .chat-contact-info h4 {
+            font-weight: 600;
+        }
+        
+        .chat-contact-info p {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        .chat-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .chat-actions i {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .chat-actions i:hover {
+            transform: scale(1.1);
+        }
+        
+        .chat-messages {
+            height: 400px;
+            padding: 1rem;
+            overflow-y: auto;
+            background-color: var(--chat-bg);
+            background-image: url('https://web.whatsapp.com/img/bg-chat-tile-dark_a4be512e7195b6b733d9110b408f075d.png');
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            position: relative;
+            word-wrap: break-word;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .sent {
+            background-color: var(--sent-msg);
+            margin-left: auto;
+            border-bottom-right-radius: 0;
+        }
+        
+        .received {
+            background-color: var(--received-msg);
+            margin-right: auto;
+            border-bottom-left-radius: 0;
+        }
+        
+        .message-time {
+            font-size: 0.7rem;
+            color: var(--gray);
+            text-align: right;
+            margin-top: 0.3rem;
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 1rem;
+            background-color: white;
+            align-items: center;
+            border-top: 1px solid #eee;
+        }
+        
+        .chat-input i {
+            margin: 0 0.5rem;
+            color: var(--gray);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .chat-input i:hover {
+            color: var(--primary);
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .file-upload {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+        
+        .file-upload input[type="file"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        /* Call Modal */
+        .call-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .call-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            width: 350px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: modalFadeIn 0.3s;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .call-container img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 1rem auto;
+            border: 3px solid var(--primary);
+        }
+        
+        .call-actions {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .call-actions button {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .end-call {
+            background-color: #ff4444;
+            color: white;
+        }
+        
+        .end-call:hover {
+            background-color: #cc0000;
+        }
+        
+        /* Features Section */
+        .feature-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin: 3rem 0;
+        }
+        
+        .feature-card {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--secondary), var(--dark));
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            text-align: left;
+        }
+        
+        .footer-logo {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-logo .logo {
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .footer-logo p {
+            opacity: 0.8;
+        }
+        
+        .footer-links {
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .footer-links h4 {
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            opacity: 0.8;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .platform-showcase {
+                flex-direction: column;
+            }
+            
+            .chat-container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="https://via.placeholder.com/40x40/075E54/FFFFFF?text=WM" alt="WhatsMark Logo">
+            <span>WhatsMark Pro</span>
+        </div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
+            <a href="#signup" class="btn-signup">Sign Up</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Advanced WhatsApp Marketing Platform</h1>
+        <p>Grow your business with powerful WhatsApp automation, group management, and bulk messaging tools.</p>
+        <a href="#signup" class="cta-button">Get Started Free</a>
+    </section>
+
+    <!-- Features Section -->
+    <section class="container" id="features">
+        <h2 class="section-title">Powerful Marketing Features</h2>
+        <div class="platform-showcase">
+            <div class="platform-features">
+                <h3>Everything You Need in One Platform</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Real-time messaging with read receipts</li>
+                    <li><i class="fas fa-check-circle"></i> Voice & video call integration</li>
+                    <li><i class="fas fa-check-circle"></i> File & media sharing</li>
+                    <li><i class="fas fa-check-circle"></i> Automated group invites</li>
+                    <li><i class="fas fa-check-circle"></i> Member tracking & analytics</li>
+                    <li><i class="fas fa-check-circle"></i> Payment system for promoters</li>
+                    <li><i class="fas fa-check-circle"></i> 24/7 customer support</li>
+                </ul>
+                <a href="#signup" class="cta-button" style="display: inline-block; margin-top: 1.5rem;">Try It Now</a>
+            </div>
+            <div class="chat-container">
+                <div class="chat-header">
+                    <div class="chat-contact">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile">
+                        <div class="chat-contact-info">
+                            <h4>Marketing Group #1</h4>
+                            <p>online</p>
+                        </div>
+                    </div>
+                    <div class="chat-actions">
+                        <i class="fas fa-phone" onclick="openCallModal()"></i>
+                        <i class="fas fa-video" onclick="openVideoModal()"></i>
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                </div>
+                <div class="chat-messages">
+                    <div class="message received">
+                        Welcome to our premium marketing group! 🚀
+                        <div class="message-time">10:30 AM</div>
+                    </div>
+                    <div class="message sent">
+                        Thanks! I've added 5 new members today.
+                        <div class="message-time">10:32 AM ✓✓</div>
+                    </div>
+                    <div class="message received">
+                        <i class="fas fa-file-pdf"></i> Campaign_Guidelines.pdf
+                        <div class="message-time">10:33 AM</div>
+                    </div>
+                    <div class="message sent">
+                        <img src="https://via.placeholder.com/200x120/25D366/FFFFFF?text=Promo+Image" alt="Preview" style="max-width: 100%; border-radius: 5px;">
+                        <div class="message-time">10:35 AM ✓✓</div>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <div class="file-upload">
+                        <i class="fas fa-paperclip"></i>
+                        <input type="file">
+                    </div>
+                    <i class="fas fa-smile"></i>
+                    <input type="text" placeholder="Type a message">
+                    <i class="fas fa-microphone"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature Cards -->
+        <div class="feature-cards">
+            <div class="feature-card">
+                <i class="fas fa-comment-dots"></i>
+                <h3>Bulk Messaging</h3>
+                <p>Send personalized messages to thousands of contacts with automation tools.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-users"></i>
+                <h3>Group Management</h3>
+                <p>Easily manage multiple groups, track members, and assign promoters.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-file-export"></i>
+                <h3>File Sharing</h3>
+                <p>Share images, videos, PDFs, and documents directly in chats.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-phone-alt"></i>
+                <h3>Call Integration</h3>
+                <p>Make voice & video calls to clients or team members.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call Modal -->
+    <div class="call-modal" id="callModal">
+        <div class="call-container">
+            <h3>Calling Marketing Group #1</h3>
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile">
+            <p>Connecting...</p>
+            <div class="call-actions">
+                <button class="end-call" onclick="closeCallModal()">
+                    <i class="fas fa-phone"></i> End Call
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <section class="container" id="how-it-works">
+        <h2 class="section-title">How It Works</h2>
+        <div class="platform-showcase">
+            <div class="chat-container" style="order: 2;">
+                <div class="chat-header">
+                    <div class="chat-contact">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile">
+                        <div class="chat-contact-info">
+                            <h4>Support Team</h4>
+                            <p>online</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-messages">
+                    <div class="message received">
+                        Your earnings this week: ₹2,450 💰
+                        <div class="message-time">Yesterday</div>
+                    </div>
+                    <div class="message received">
+                        <i class="fas fa-file-excel"></i> earnings_report.xlsx
+                        <div class="message-time">Yesterday</div>
+                    </div>
+                    <div class="message sent">
+                        Can I get payment via UPI instead of PayTM?
+                        <div class="message-time">Today 9:15 AM ✓✓</div>
+                    </div>
+                    <div class="message received">
+                        Yes! Update your payment method in Settings → Payments.
+                        <div class="message-time">Today 9:17 AM</div>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <i class="fas fa-paperclip"></i>
+                    <input type="text" placeholder="Type a message">
+                    <i class="fas fa-microphone"></i>
+                </div>
+            </div>
+            <div class="platform-features" style="order: 1;">
+                <h3>Start Earning in 3 Steps</h3>
+                <ul>
+                    <li><i class="fas fa-user-plus"></i> <strong>Sign Up</strong> - Create your promoter account</li>
+                    <li><i class="fas fa-users"></i> <strong>Get Groups</strong> - We assign WhatsApp groups to promote</li>
+                    <li><i class="fas fa-rupee-sign"></i> <strong>Earn Money</strong> - Get paid for every active member you add</li>
+                </ul>
+                <p style="margin-top: 1.5rem; font-style: italic;">
+                    "I earned ₹12,000 in my first month! This platform is a game-changer."<br>
+                    <strong>- Rahul S., Delhi</strong>
+                </p>
+                <a href="#signup" class="cta-button" style="display: inline-block; margin-top: 1.5rem;">Join Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signup Section -->
+    <section class="container" id="signup" style="background-color: #f0f8ff; border-radius: 15px; padding: 3rem;">
+        <h2 class="section-title">Ready to Get Started?</h2>
+        <div style="max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);">
+            <form>
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Full Name</label>
+                    <input type="text" placeholder="Enter your name" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px; font-family: 'Poppins', sans-serif;">
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">WhatsApp Number</label>
+                    <input type="tel" placeholder="Enter your WhatsApp number" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px; font-family: 'Poppins', sans-serif;">
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Email (Optional)</label>
+                    <input type="email" placeholder="Enter your email" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px; font-family: 'Poppins', sans-serif;">
+                </div>
+                <button type="submit" style="background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; padding: 1rem; width: 100%; border-radius: 5px; font-weight: 600; cursor: pointer; transition: transform 0.3s;">
+                    Sign Up & Start Earning
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="logo" style="justify-content: flex-start;">
+                    <img src="https://via.placeholder.com/40x40/075E54/FFFFFF?text=WM" alt="WhatsMark Logo">
+                    <span>WhatsMark Pro</span>
+                </div>
+                <p>Advanced WhatsApp marketing tools for businesses and promoters.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">Webinars</a></li>
+                    <li><a href="#">Tutorials</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">GDPR</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2023 WhatsMark Pro. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Call Modal Functions
+        function openCallModal() {
+            document.getElementById('callModal').style.display = 'flex';
+        }
+        
+        function openVideoModal() {
+            document.getElementById('callModal').style.display = 'flex';
+            document.querySelector('.call-container h3').textContent = 'Video Calling Marketing Group #1';
+        }
+        
+        function closeCallModal() {
+            document.getElementById('callModal').style.display = 'none';
+        }
+        
+        // Chat Functionality
+        document.querySelector('.chat-input input').addEventListener('keypress', function(e) {
+            if(e.key === 'Enter' && this.value.trim() !== '') {
+                const messagesContainer = document.querySelector('.chat-messages');
+                const newMessage = document.createElement('div');
+                newMessage.className = 'message sent';
+                newMessage.innerHTML = `
+                    ${this.value}
+                    <div class="message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} ✓</div>
+                `;
+                messagesContainer.appendChild(newMessage);
+                this.value = '';
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                
+                // Simulate reply
+                setTimeout(() => {
+                    const replies = [
+                        "Thanks for your message!",
+                        "We'll review your submission shortly.",
+                        "Your earnings have been updated!",
+                        "Please check the guidelines document.",
+                        "How can we assist you today?"
+                    ];
+                    const reply = replies[Math.floor(Math.random() * replies.length)];
+                    const replyMessage = document.createElement('div');
+                    replyMessage.className = 'message received';
+                    replyMessage.innerHTML = `
+                        ${reply}
+                        <div class="message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                    `;
+                    messagesContainer.appendChild(replyMessage);
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }, 1000 + Math.random() * 1000);
+            }
+        });
+        
+        // File Upload Display
+        document.querySelector('.file-upload input').addEventListener('change', function(e) {
+            if(this.files.length > 0) {
+                const messagesContainer = document.querySelector('.chat-messages');
+                const file = this.files[0];
+                let fileIcon = 'fa-file';
+                let fileType = file.type.split('/')[0];
+                
+                if(fileType === 'image') fileIcon = 'fa-image';
+                else if(fileType === 'video') fileIcon = 'fa-video';
+                else if(file.type.includes('pdf')) fileIcon = 'fa-file-pdf';
+                else if(file.type.includes('word')) fileIcon = 'fa-file-word';
+                else if(file.type.includes('excel')) fileIcon = 'fa-file-excel';
+                
+                const newMessage = document.createElement('div');
+                newMessage.className = 'message sent';
+                newMessage.innerHTML = `
+                    <i class="fas ${fileIcon}"></i> ${file.name}
+                    <div class="message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} ✓</div>
+                `;
+                messagesContainer.appendChild(newMessage);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                this.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
